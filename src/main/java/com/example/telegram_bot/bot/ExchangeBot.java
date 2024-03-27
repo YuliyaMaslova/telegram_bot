@@ -1,8 +1,10 @@
 package com.example.telegram_bot.bot;
 
 import com.example.telegram_bot.service.NumberService;
+import lombok.NoArgsConstructor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;;
 import org.springframework.stereotype.Component;
 import org.telegram.telegrambots.bots.TelegramLongPollingBot;
@@ -16,8 +18,11 @@ public class ExchangeBot extends TelegramLongPollingBot {
     private static final String START = "/start";
     private static final String INFO = "/get_info";
 
-    public ExchangeBot(@Value("${bot.token}") String botToken) {
+    private final NumberService numberService;
+
+    public ExchangeBot(@Value("${bot.token}") String botToken, NumberService numberService) {
         super(botToken);
+        this.numberService = numberService;
     }
 
 
@@ -57,7 +62,7 @@ public class ExchangeBot extends TelegramLongPollingBot {
     }
 
     private void sendRandomNumber(long chatId)  {
-        int randomNumber = NumberService.generateRandomNumber();
+        int randomNumber = numberService.generateRandomNumber();
         String message = "Ваше счастливое число: " + randomNumber;
         sendMessage(chatId, message);
     }

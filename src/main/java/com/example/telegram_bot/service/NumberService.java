@@ -8,7 +8,7 @@ import java.util.Random;
 public class NumberService {
     private static final Random random = new Random();
 
-    public static int generateRandomNumber() {
+    public int generateRandomNumber() {
         return random.nextInt(100) + 1;
     }
 }

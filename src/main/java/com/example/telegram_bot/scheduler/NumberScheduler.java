@@ -11,14 +11,16 @@ import java.util.Random;
 public class NumberScheduler {
 
     private final ExchangeBot exchangeBot;
+    private final NumberService numberService;
 
-    public NumberScheduler(ExchangeBot exchangeBot) {
+    public NumberScheduler(ExchangeBot exchangeBot, NumberService numberService) {
         this.exchangeBot = exchangeBot;
+        this.numberService = numberService;
     }
 
     @Scheduled(cron = "0 0 */1 * * *")
     public void sendRandomNumber() {
-        int randomNumber = NumberService.generateRandomNumber();
+        int randomNumber = numberService.generateRandomNumber();
         exchangeBot.sendMessage(-123456789L, "Random number: " + randomNumber);
     }
 }
