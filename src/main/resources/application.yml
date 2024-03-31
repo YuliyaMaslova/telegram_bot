@@ -1,0 +1,15 @@
+bot.token: 7021081550:AAGWscX6JHXoSyLMtdle1n-4yhGvhpzCKkM
+spring:
+  cloud:
+    openfeign:
+      client:
+        config:
+          moex:
+            logger-level: full
+
+
+
+logging:
+  level:
+    root: info
+
