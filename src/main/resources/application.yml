@@ -1,4 +1,4 @@
-bot.token: 7021081550:AAGWscX6JHXoSyLMtdle1n-4yhGvhpzCKkM
+bot.token:
 spring:
   cloud:
     openfeign:
