@@ -10,7 +10,6 @@ import org.springframework.stereotype.Component;
 
 @Component
 public class MarketDataScheduler {
-
     private final ExchangeBot exchangeBot;
     private static final Logger LOG = LoggerFactory.getLogger(ExchangeBot.class);
 
